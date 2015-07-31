@@ -1,13 +1,14 @@
 ---
 specversion: 0.0.2
-id: guestbookgo-app
 
+id: guestbookgo-app
 metadata:
-  name: Guestbook-Go App
+  name: "Guestbook-Go App"
   appversion: 0.0.1
-  description: Atomic app for deploying the kubernetes guestbook-go app
+  description: "Atomic app for deploying the kubernetes guestbook-go app"
+
 graph:
-  - name: guestbookfront-app
+  - name: guestbookfrontend
     params:
       - name: image
         description: The frontend part
