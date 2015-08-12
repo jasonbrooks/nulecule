@@ -8,7 +8,7 @@ metadata:
   description: "Atomic app for deploying the kubernetes guestbook-go app"
 
 graph:
-  - name: guestbookfrontend
+  - name: guestbook
     params:
       - name: image
         description: The frontend part
@@ -17,5 +17,18 @@ graph:
       kubernetes:
         - file://artifacts/kubernetes/guestbook-controller.json
         - file://artifacts/kubernetes/guestbook-service.json
-  - name: redis-centos7-atomicapp
-    source: docker://projectatomic/redis-centos7-atomicapp
+  - name: redis-master
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/redis-master-controller.json
+        - file://artifacts/kubernetes/redis-master-service.json
+  - name: redis-slave
+    artifacts:
+      kubernetes:
+        - file://artifacts/kubernetes/redis-slave-controller.json
+        - file://artifacts/kubernetes/redis-slave-service.json
+
+#  composite app below replaces the redis-master and -slave
+#  pieces above, but commented out due to #TK
+#  - name: redis-centos7-atomicapp
+#    source: docker://projectatomic/redis-centos7-atomicapp

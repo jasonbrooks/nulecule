@@ -1,32 +1,36 @@
 {
    "kind":"ReplicationController",
    "apiVersion":"v1",
+   "id":"redis-slave",
    "metadata":{
-      "name":"guestbook",
+      "name":"redis-slave",
       "labels":{
-         "app":"guestbook"
+         "app":"redis",
+         "role":"slave"
       }
    },
    "spec":{
-      "replicas":3,
+      "replicas":2,
       "selector":{
-         "app":"guestbook"
+         "app":"redis",
+         "role":"slave"
       },
       "template":{
          "metadata":{
             "labels":{
-               "app":"guestbook"
+               "app":"redis",
+               "role":"slave"
             }
          },
          "spec":{
             "containers":[
                {
-                  "name":"guestbook",
-                  "image":"kubernetes/guestbook:v2",
+                  "name":"redis-slave",
+                  "image":"kubernetes/redis-slave:v2",
                   "ports":[
                      {
-                        "name":"http-server",
-                        "containerPort":3000
+                        "name":"redis-server",
+                        "containerPort":6379
                      }
                   ]
                }
