@@ -7,14 +7,16 @@ Kubernetes is currently the only supported provider. You'll need to run this fro
 Build:
 
 ```
-# docker build $USER/guestbookgo-atomicapp
+# docker build -t $USER/guestbookgo-atomicapp .
 ```
 
 ### Step 2 
 
-Run:
+Install and Run:
+
 
 ```
+# atomic install $USER/guestbookgo-atomicapp
 # atomic run $USER/guestbookgo-atomicapp
 ```
 
